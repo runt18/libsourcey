@@ -21,7 +21,9 @@ if(WIN32)
 elseif(APPLE)
   add_definitions(-D__MACOSX_CORE__)
 else()
-  add_definitions(-D__UNIX_JACK__)
+  #set(rtaudio_DEPENDENCIES pulse-simple pulse)
+  set(rtaudio_DEPENDENCIES asound)
+  add_definitions(-D__LINUX_ALSA__) # __LINUX_ALSA__, __UNIX_JACK__, __LINUX_PULSE__
 endif()
 
 define_sourcey_dependency(rtaudio)
