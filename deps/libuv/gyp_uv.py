@@ -79,14 +79,14 @@ if __name__ == '__main__':
       args.extend(['-Goutput_dir=' + output_dir])
       args.extend(['--generator-output', output_dir])
     (major, minor), is_clang = compiler_version()
-    args.append('-Dgcc_version=%d' % (10 * major + minor))
-    args.append('-Dclang=%d' % int(is_clang))
+    args.append('-Dgcc_version={0:d}'.format((10 * major + minor)))
+    args.append('-Dclang={0:d}'.format(int(is_clang)))
 
   if not any(a.startswith('-Dhost_arch=') for a in args):
-    args.append('-Dhost_arch=%s' % host_arch())
+    args.append('-Dhost_arch={0!s}'.format(host_arch()))
 
   if not any(a.startswith('-Dtarget_arch=') for a in args):
-    args.append('-Dtarget_arch=%s' % host_arch())
+    args.append('-Dtarget_arch={0!s}'.format(host_arch()))
 
   if not any(a.startswith('-Duv_library=') for a in args):
     args.append('-Duv_library=static_library')
